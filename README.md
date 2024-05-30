@@ -1,8 +1,12 @@
-# React + Vite
+## Atividades
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Adicionar o produto ao carrinho
+- Criar uma funçao no Context de Cart
+- Alterar a quantidade de acordo com a quantidade adicionada ao carrinho
+  - useEffect para conseguir pegar o valor atual da quantidade
+- Como ir para o checkout
+  - React Router Dom
+- Como remover o produto do checkout
+  - Criar uma funçao no Context de Cart
+- Como somar ou diminuir o produto do checkout atraves dos icones de + e -
+  - Utilizar as funçoes de adicionar e remover

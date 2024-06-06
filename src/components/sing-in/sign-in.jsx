@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "../button/button";
 import { FormInput } from "../form-input/form-input";
 import './sign-in.scss'
+import { signInAuthUserWithEmailPassword, signInWithGooglePopup } from "../../utils/firebase";
 
 const defaultFormFilds = {
   email: "",
@@ -18,10 +19,21 @@ export function SignIn() {
     setFormFilds({...formFilds, [name]: value})
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
+    try {
+      console.log(email, senha)
+      const { user } = await signInAuthUserWithEmailPassword(email, senha)
+      console.log(user)
+    } catch (e) {
+      console.log(e)
+    }
     console.log(formFilds)
     setFormFilds(defaultFormFilds)
+  }
+
+  const signInWithGoogle = async () => {
+    await signInWithGooglePopup()
   }
 
   return (
@@ -50,7 +62,7 @@ export function SignIn() {
         <Button type="submit">
           Login
         </Button>
-        <Button type="button" typeButton="google">
+        <Button type="button" typeButton="google" onClick={signInWithGoogle}>
           Login com Google
         </Button>
       </form>

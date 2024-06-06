@@ -5,10 +5,12 @@ import { NavLink } from 'react-router-dom'
 import { CartDropdown } from '../../components/cart-dropdown/cart-dropdown'
 import { useContext } from 'react'
 import { CartContext } from '../../context/cartContext'
-
+import { UserContext } from '../../context/userContext'
+import { signOutAuthUser } from '../../utils/firebase'
 export function Navigation() {
 
   const { isCartOpen } = useContext(CartContext)
+  const { currentUser } = useContext(UserContext)
   return (
     <>
       <div className="navigation">
@@ -21,9 +23,18 @@ export function Navigation() {
           <NavLink className="nav-link" to="/shop">
             SHOP
           </NavLink>
-          <NavLink className="nav-link" to="/auth">
-            LOGIN
-          </NavLink>
+          {
+            currentUser ? (
+              <NavLink className="nav-link" onClick={signOutAuthUser}>
+                LOGOUT
+              </NavLink>
+            ) : (
+              <NavLink className="nav-link" to="/auth">
+                LOGIN
+              </NavLink>
+            )
+          }
+          
           <CartIcon />
         </div>
         { isCartOpen && <CartDropdown /> }
